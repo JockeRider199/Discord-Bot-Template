@@ -1,7 +1,7 @@
-import { Bot } from "./bot";
+import { Bot } from './bot';
 
 export interface Event {
-	exec(client: Bot, ...args: any[]): void;
+	exec(client: Bot, ...args: unknown[]): void;
 
 	settings: {
 		enabled: boolean;

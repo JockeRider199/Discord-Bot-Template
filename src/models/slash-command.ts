@@ -1,7 +1,8 @@
-import { ButtonInteraction, ChatInputCommandInteraction } from "discord.js";
-import { Bot } from "./bot";
+import { ButtonInteraction, ChatInputCommandInteraction } from 'discord.js';
+import { Bot } from './bot';
 
 export interface SlashCommand {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	data: any;
 
 	exec(interaction: ChatInputCommandInteraction): void;

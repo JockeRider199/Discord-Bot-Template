@@ -1,40 +1,40 @@
-import { Interaction } from "discord.js";
-import { Bot } from "../models/bot";
-import { Event } from "../models/event";
+import { Interaction } from 'discord.js';
+import { Bot } from '../models/bot';
+import { Event } from '../models/event';
 
 export const event: Event = {
 	async exec(client: Bot, interaction: Interaction) {
 		if (interaction.isChatInputCommand()) {
-			let commandName = interaction.commandName;
-			let command = client
+			const commandName = interaction.commandName;
+			const command = client
 				.getSlashCommands()
 				.find((cmd) => cmd.data.name == commandName);
 			if (command) {
 				command.exec(interaction);
 			}
 		} else if (interaction.isUserContextMenuCommand()) {
-			let commandName = interaction.commandName;
-			let command = client
+			const commandName = interaction.commandName;
+			const command = client
 				.getContextMenus()
 				.find((cmd) => cmd.data.name == commandName);
 			if (command) {
 				command.exec(interaction);
 			}
 		} else if (interaction.isButton()) {
-			let interactionData = interaction.customId.split("_");
-			let commandName = interactionData[0];
-			let buttonId = interactionData[1];
+			const interactionData = interaction.customId.split('_');
+			const commandName = interactionData[0];
+			const buttonId = interactionData[1];
 
-			let command = client
+			const command = client
 				.getSlashCommands()
 				.find((cmd) => cmd.data.name == commandName);
 			if (command && command.execButtons) {
 				command.execButtons(interaction, buttonId, client);
 			}
 		} else if (interaction.isContextMenuCommand()) {
-			let commandName = interaction.commandName;
+			const commandName = interaction.commandName;
 
-			let command = client
+			const command = client
 				.getContextMenus()
 				.find((cmd) => cmd.data.name == commandName);
 

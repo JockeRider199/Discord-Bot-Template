@@ -1,6 +1,6 @@
-import { config as envConfig } from "dotenv";
+import { config as envConfig } from 'dotenv';
 
-import { Bot } from "./models/bot";
+import { Bot } from './models/bot';
 
 envConfig();
 const client = new Bot();
@@ -10,12 +10,12 @@ async function main(): Promise<void> {
 	await client.loadSlashCommands();
 	//await client.loadContextMenus();
 
-	if (process.env.CACHE === "clear") {
-		console.log("Resetting cache");
+	if (process.env.CACHE === 'clear') {
+		console.log('Resetting cache');
 		await client.unSyncInteractions();
 	}
 
-	if (process.env.PRODUCTION == "TRUE") {
+	if (process.env.PRODUCTION == 'TRUE') {
 		await client.syncGlobalInteractions({
 			slashCommands: true,
 			contextMenus: true,
